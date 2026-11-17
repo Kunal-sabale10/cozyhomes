@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
+@theme {
+  /* CozyMoments Refined Palette */
+  --color-cream: #F7F3EC;
+  --color-ivory: #FBF8F3;
+  --color-sand: #E6D9C6;
+  --color-espresso: #4A2E22;
+  --color-sage: #7D8B6A;
+  --color-sage-deep: #56634A;
+  --color-charcoal: #2B2622;
+  --color-umber: #6B5E55;
+  --color-stone: #B8ADA3;
+
+  /* Additional backward-compatible shades */
+  --color-espresso-dark: #382117;
+  --color-espresso-light: #5E3D30;
+  --color-sand-light: #F0E6D8;
+  --color-sand-dark: #D4C2AB;
+  --color-ivory-light: #FCFAF6;
+  --color-ivory-dark: #EFE9DC;
+  --color-charcoal-light: #4E382D;
+  --color-charcoal-muted: #6B5E55;
+  --color-charcoal-dark: #1C130E;
+  --color-warm-white: #FBF8F3;
+  --color-warm-gray: #8C7769;
+  --color-beige: #E6D9C6;
+  --color-sage-dark: #56634A;
+  --color-sage-light: #A3B090;
+  --color-sage-lightest: #EFE9DC;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #F7F3EC;
+  --ivory: #FBF8F3;
+  --sand: #E6D9C6;
+  --espresso: #4A2E22;
+  --sage: #7D8B6A;
+  --sage-deep: #56634A;
+  --charcoal: #2B2622;
+  --umber: #6B5E55;
+  --stone: #B8ADA3;
+
+  --background: #F7F3EC;
+  --foreground: #2B2622;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F3EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8C3A5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5B3929;
+}
+
+/* Focus visible styles for keyboard users only — no outline after mouse click */
+*:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+*:focus-visible {
+  outline: 2px solid #56634A;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: #D8C3A5;
+  color: #2B1D16;
 }
